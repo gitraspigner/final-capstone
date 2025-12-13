@@ -17,4 +17,8 @@ public abstract class MySqlDaoBase
     {
         return dataSource.getConnection();
     }
+
+    public DataSource getDataSource() {
+        return dataSource;
+    }
 }

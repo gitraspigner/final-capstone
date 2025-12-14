@@ -97,7 +97,7 @@ function setMinPrice(control)
     const label = document.getElementById("min-price-display")
     label.innerText = control.value;
 
-    const value = control.value != 0 ? control.value : "";
+    const value = control.value != 0 ? control.value : -1;
     productService.addMinPriceFilter(value)
     productService.search();
 
@@ -105,11 +105,11 @@ function setMinPrice(control)
 
 function setMaxPrice(control)
 {
-    // const slider = document.getElementById("min-price");
+    // const slider = document.getElementById("max-price");
     const label = document.getElementById("max-price-display")
     label.innerText = control.value;
 
-    const value = control.value != 200 ? control.value : "";
+    const value = control.value != 500 ? control.value : -1;
     productService.addMaxPriceFilter(value)
     productService.search();
 

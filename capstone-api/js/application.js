@@ -1,3 +1,8 @@
+window.userService = new UserService();
+window.productService = new ProductService();
+window.categoryService = new CategoryService();
+window.profileService = new ProfileService();
+window.cartService = new ShoppingCartService();
 
 function showLoginForm()
 {

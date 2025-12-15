@@ -105,30 +105,35 @@ class UserService {
             });
     }
 
-    login (username, password)
-    {
+    async login(username, password) {
         const url = `${config.baseUrl}/login`;
-        const login = {
-            username: username,
-            password: password
-        };
+        const login = { username, password };
 
-        axios.post(url, login)
-            .then(response => {
-                this.saveUser(response.data)
-                this.setHeaderLogin();
+        try {
+            const response = await axios.post(url, login);
 
-                axios.defaults.headers.common = {'Authorization': `Bearer ${this.currentUser.token}`}
-                productService.enableButtons();
-                cartService.loadCart();
-            })
-            .catch(error => {
-                const data = {
-                    error: "Login failed."
-                };
+            this.saveUser(response.data);
+            this.setHeaderLogin();
 
-                templateBuilder.append("error", data, "errors")
-            })
+            axios.defaults.headers.common = {
+                'Authorization': `Bearer ${this.currentUser.token}`
+            };
+
+            productService.enableButtons();
+
+            try {
+                await cartService.loadCart();
+            } catch (error) {
+                console.error("Cart load failed:", error);
+                const data = { error: "Unable to load cart." };
+                templateBuilder.append("error", data, "errors");
+            }
+
+        } catch (error) {
+            console.error("Login error:", error);
+            const data = { error: "Login failed. Please check your credentials." };
+            templateBuilder.append("error", data, "errors");
+        }
     }
 
     logout()

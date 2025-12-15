@@ -10,24 +10,20 @@ class ShoppingCartService {
     addToCart(productId)
     {
         const url = `${config.baseUrl}/cart/products/${productId}`;
-        // const headers = userService.getHeaders();
+        const headers = userService.getHeaders();
+        //const userId = userService.getCurrentUserId();
 
-        axios.post(url, {})// ,{headers})
+        axios.post(url, {}, { headers })
             .then(response => {
-                this.setCart(response.data)
-
-                this.updateCartDisplay()
-
+                this.setCart(response.data);
+                this.updateCartDisplay();
             })
             .catch(error => {
-
-                const data = {
-                    error: "Add to cart failed."
-                };
-
-                templateBuilder.append("error", data, "errors")
-            })
+                const data = { error: "Add to cart failed." };
+                templateBuilder.append("error", data, "errors");
+            });
     }
+
 
     setCart(data)
     {
@@ -43,28 +39,19 @@ class ShoppingCartService {
         }
     }
 
-    loadCart()
-    {
-
+    loadCart() {
         const url = `${config.baseUrl}/cart`;
-
-        axios.get(url)
+        return axios.get(url, {
+            headers: {
+                'Authorization': `Bearer ${userService.currentUser.token}`
+            }
+        })
             .then(response => {
-                this.setCart(response.data)
-
-                this.updateCartDisplay()
-
-            })
-            .catch(error => {
-
-                const data = {
-                    error: "Load cart failed."
-                };
-
-                templateBuilder.append("error", data, "errors")
-            })
-
+                this.setCart(response.data);
+                this.updateCartDisplay();
+            });
     }
+
 
     loadCartPage()
     {

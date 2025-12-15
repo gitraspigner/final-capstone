@@ -67,7 +67,7 @@ public class MySqlShoppingCartDao implements ShoppingCartDao {
         String sql = "INSERT INTO shopping_cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, userId);
-            stmt.setInt(2, item.getProductId());
+            stmt.setInt(2, item.getProduct().getProductId());
             stmt.setInt(3, item.getQuantity());
             stmt.executeUpdate();
         } catch (SQLException e) {

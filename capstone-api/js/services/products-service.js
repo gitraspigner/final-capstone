@@ -1,10 +1,6 @@
 let productService;
-
 class ProductService {
-
     photos = [];
-
-
     filter = {
         cat: undefined,
         minPrice: undefined,
@@ -31,11 +27,9 @@ class ProductService {
                 if(qs.length>0) {   qs += `&${sub}`; }
                 else { qs = sub; }
             }
-
             return qs.length > 0 ? `?${qs}` : "";
         }
     }
-
     constructor() {
 
         //load list of photos into memory
@@ -44,11 +38,9 @@ class ProductService {
                 this.photos = response.data;
             });
     }
-
     hasPhoto(photo){
         return this.photos.filter(p => p == photo).length > 0;
     }
-
     addCategoryFilter(cat)
     {
         if(cat == 0) this.clearCategoryFilter();
@@ -119,7 +111,6 @@ class ProductService {
     enableButtons()
     {
         const buttons = [...document.querySelectorAll(".add-button")];
-
         if(userService.isLoggedIn())
         {
             buttons.forEach(button => {
@@ -133,13 +124,7 @@ class ProductService {
             });
         }
     }
-
 }
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     productService = new ProductService();
 

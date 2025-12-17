@@ -1,27 +1,22 @@
-
 let userService;
-
 class UserService {
     currentUser = {};
 
-    constructor()
-    {
+    constructor() {
         this.loadUser();
     }
 
-    getHeader()
-    {
-        if(this.currentUser.token) {
+    getHeader() {
+        if (this.currentUser.token) {
             return {
-                    'Authorization': `Bearer ${this.currentUser.token}`
+                'Authorization': `Bearer ${this.currentUser.token}`
             };
         }
 
         return {};
     }
 
-    saveUser(user)
-    {
+    saveUser(user) {
         //login response
         if (user.user) {
             this.currentUser = {
@@ -42,58 +37,47 @@ class UserService {
         localStorage.setItem('user', JSON.stringify(this.currentUser));
     }
 
-    loadUser()
-    {
+    loadUser() {
         const user = localStorage.getItem('user');
-        if(user)
-        {
+        if (user) {
             this.currentUser = JSON.parse(user);
             axios.defaults.headers.common = {'Authorization': `Bearer ${this.currentUser.token}`}
         }
     }
 
-    getHeaders()
-    {
+    getHeaders() {
         const headers = {
             'Content-Type': 'application/json'
         }
-
-        if(this.currentUser.token)
-        {
+        if (this.currentUser.token) {
             headers.Authorization = `Bearer ${this.currentUser.token}`;
         }
-
         return headers;
     }
 
-    getUserName()
-    {
+    getUserName() {
         return this.isLoggedIn() ? this.currentUser.username : '';
     }
 
-    isLoggedIn()
-    {
+    isLoggedIn() {
         return this.currentUser.token !== undefined;
     }
 
-    getCurrentUser()
-    {
+    getCurrentUser() {
         return this.currentUser;
     }
 
-    setHeaderLogin()
-    {
+    setHeaderLogin() {
         const user = {
-                username: this.getUserName(),
-                loggedin: this.isLoggedIn(),
-                loggedout: !this.isLoggedIn()
-            };
+            username: this.getUserName(),
+            loggedin: this.isLoggedIn(),
+            loggedout: !this.isLoggedIn()
+        };
 
         templateBuilder.build('header', user, 'header-user');
     }
 
-    register (username, password, confirm, role)
-    {
+    register(username, password, confirm, role) {
         const url = `${config.baseUrl}/register`;
         const register = {
             username: username,
@@ -101,64 +85,50 @@ class UserService {
             confirmPassword: confirm,
             role: role
         };
-
         return axios.post(url, register)
             .then(response => {
                 console.log(response.data);
                 return response.data;
             })
             .catch(error => {
-                const data = { error: "User registration failed." };
+                const data = {error: "User registration failed."};
                 templateBuilder.append("error", data, "errors");
                 //throw error;
             });
-
     }
 
     async login(username, password) {
         const url = `${config.baseUrl}/login`;
-        const login = { username, password };
-
+        const login = {username, password};
         try {
             const response = await axios.post(url, login);
-
             this.saveUser(response.data);
             this.setHeaderLogin();
-
             axios.defaults.headers.common = {
                 'Authorization': `Bearer ${this.currentUser.token}`
             };
-
             productService.enableButtons();
-
             try {
                 await cartService.loadCart();
             } catch (error) {
                 console.error("Cart load failed:", error);
-                const data = { error: "Unable to load cart." };
+                const data = {error: "Unable to load cart."};
                 templateBuilder.append("error", data, "errors");
             }
-
         } catch (error) {
             console.error("Login error:", error);
-            const data = { error: "Login failed. Please check your credentials." };
+            const data = {error: "Login failed. Please check your credentials."};
             templateBuilder.append("error", data, "errors");
         }
     }
-
-    logout()
-    {
+    logout() {
         localStorage.removeItem('user');
         axios.defaults.headers.common = {'Authorization': `bearer ${this.currentUser.token}`}
         this.currentUser = {};
-
         this.setHeaderLogin();
-
         productService.enableButtons();
     }
-
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     userService = new UserService();
     userService.setHeaderLogin();

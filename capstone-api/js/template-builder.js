@@ -1,5 +1,4 @@
 let templateBuilder = {};
-
 class TemplateBuilder
 {
     build(templateName, value, target, callback)
@@ -11,7 +10,6 @@ class TemplateBuilder
                     const template = response.data;
                     const html = Mustache.render(template, value);
                     document.getElementById(target).innerHTML = html;
-
                     if(callback) callback();
                 }
                 catch(e)
@@ -20,12 +18,10 @@ class TemplateBuilder
                 }
             })
     }
-
     clear(target)
     {
         document.getElementById(target).innerHTML = "";
     }
-
     append(templateName, value, target)
     {
         axios.get(`templates/${templateName}.html`)
@@ -34,11 +30,9 @@ class TemplateBuilder
                  {
                      const template = response.data;
                      const html = Mustache.render(template, value);
-
                      const element = this.createElementFromHTML(html);
                      const parent = document.getElementById(target);
                      parent.appendChild(element);
-
                      if(target == "errors")
                      {
                          setTimeout(() => {
@@ -52,18 +46,13 @@ class TemplateBuilder
                  }
              })
     }
-
     createElementFromHTML(htmlString)
     {
         const div = document.createElement('div');
         div.innerHTML = htmlString.trim();
-
-        // Change this to div.childNodes to support multiple top-level nodes.
         return div.firstChild;
     }
-
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     templateBuilder = new TemplateBuilder();
 });

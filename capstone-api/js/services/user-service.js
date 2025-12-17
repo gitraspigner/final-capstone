@@ -22,11 +22,22 @@ class UserService {
 
     saveUser(user)
     {
-        this.currentUser = {
-            token: user.token,
-            userId: user.user.id,
-            username: user.user.username,
-            role: user.user.authorities[0].name
+        //login response
+        if (user.user) {
+            this.currentUser = {
+                token: user.token,
+                userId: user.user.id,
+                username: user.user.username,
+                role: user.user.authorities[0].name
+            };
+        } else {
+            //plain user from registration
+            this.currentUser = {
+                token: null, // no token yet
+                userId: user.id,
+                username: user.username,
+                role: user.authorities[0].name
+            };
         }
         localStorage.setItem('user', JSON.stringify(this.currentUser));
     }
@@ -81,28 +92,27 @@ class UserService {
         templateBuilder.build('header', user, 'header-user');
     }
 
-    register (username, password, confirm)
+    register (username, password, confirm, role)
     {
         const url = `${config.baseUrl}/register`;
         const register = {
             username: username,
             password: password,
             confirmPassword: confirm,
-            role: 'USER'
+            role: role
         };
 
-        axios.post(url, register)
-             .then(response => {
-                 console.log(response.data)
-             })
+        return axios.post(url, register)
+            .then(response => {
+                console.log(response.data);
+                return response.data;
+            })
             .catch(error => {
-
-                const data = {
-                    error: "User registration failed."
-                };
-
-                templateBuilder.append("error", data, "errors")
+                const data = { error: "User registration failed." };
+                templateBuilder.append("error", data, "errors");
+                //throw error;
             });
+
     }
 
     async login(username, password) {

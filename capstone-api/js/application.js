@@ -9,6 +9,11 @@ function showLoginForm()
     templateBuilder.build('login-form', {}, 'login');
 }
 
+function showRegisterForm()
+{
+    templateBuilder.build('register-form', {}, 'register');
+}
+
 function hideModalForm()
 {
     templateBuilder.clear('login');
@@ -21,6 +26,31 @@ function login()
 
     userService.login(username, password);
     hideModalForm();
+}
+
+function register()
+{
+    const username = document.getElementById("reg-username").value;
+    const password = document.getElementById("reg-password").value;
+    const confirmPassword = document.getElementById("reg-confirm-password").value;
+    const role = document.getElementById("reg-role").value || "USER"; //default to user if no role
+
+    if (password !== confirmPassword)
+    {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    userService.register(username, password, confirmPassword, role)
+        .then(user => {
+            userService.saveUser(user);
+            hideModalForm();
+        })
+        .catch(error => {
+            console.error(error);
+            const data = { error: "User registration failed." };
+            templateBuilder.append("error", data, "errors");
+        });
 }
 
 function showImageDetailForm(product, imageUrl)

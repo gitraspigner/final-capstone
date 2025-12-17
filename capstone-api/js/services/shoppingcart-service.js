@@ -128,37 +128,34 @@ class ShoppingCartService {
         parent.appendChild(outerDiv);
     }
 
-    clearCart()
-    {
-
+    clearCart() {
         const url = `${config.baseUrl}/cart`;
-
-        axios.delete(url)
-             .then(response => {
-                 this.cart = {
-                     items: [],
-                     total: 0
-                 }
-
-                 this.cart.total = response.data.total;
-
-                 for (const [key, value] of Object.entries(response.data.items)) {
-                     this.cart.items.push(value);
-                 }
-
-                 this.updateCartDisplay()
-                 this.loadCartPage()
-
-             })
-             .catch(error => {
-
-                 const data = {
-                     error: "Empty cart failed."
-                 };
-
-                 templateBuilder.append("error", data, "errors")
-             })
+        fetch(url, {
+            method: "DELETE",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": `Bearer ${userService.currentUser.token}`
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    this.cart = { items: [], total: 0 };
+                    const main = document.getElementById("main");
+                    if (main) main.innerHTML = "";
+                    this.updateCartDisplay();
+                    alert("Cart cleared!");
+                } else {
+                    return response.text().then(t => {
+                        throw new Error(t || "Failed to clear cart.");
+                    });
+                }
+            })
+            .catch(err => {
+                console.error("Error clearing cart:", err);
+                alert("Error clearing cart.");
+            });
     }
+
 
     updateCartDisplay()
     {

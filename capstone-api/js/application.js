@@ -17,6 +17,7 @@ function showRegisterForm()
 function hideModalForm()
 {
     templateBuilder.clear('login');
+    templateBuilder.clear('register');
 }
 
 function login()

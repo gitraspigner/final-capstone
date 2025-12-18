@@ -129,12 +129,13 @@ class ShoppingCartService {
     updateCartDisplay()
     {
         try {
-            const itemCount = this.cart.items.length;
-            const cartControl = document.getElementById("cart-items")
+            let itemCount = 0;
+            this.cart.items.forEach(item => {
+                itemCount += item.quantity;   // add up quantities
+            });
+            const cartControl = document.getElementById("cart-items");
             cartControl.innerText = itemCount;
-        }
-        catch (e) {
-        }
+        } catch (e) { }
     }
 }
 document.addEventListener('DOMContentLoaded', () => {

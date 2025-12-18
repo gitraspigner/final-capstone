@@ -54,7 +54,9 @@ public class MySqlShoppingCartDao implements ShoppingCartDao {
     }
     @Override
     public void addItem(int userId, ShoppingCartItem item) {
-        String sql = "INSERT INTO shopping_cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO shopping_cart (user_id, product_id, quantity)" +
+                "VALUES (?, ?, ?)" +
+                "ON DUPLICATE KEY UPDATE quantity = quantity + VALUES(quantity)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, userId);

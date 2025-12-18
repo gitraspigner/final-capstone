@@ -1,5 +1,4 @@
 package org.yearup.data.mysql;
-
 import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
@@ -8,7 +7,6 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 @Component
 public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 {
@@ -16,7 +14,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     {
         super(dataSource);
     }
-
     @Override
     public List<Category> getAllCategories() {
         List<Category> categories = new ArrayList<>();
@@ -32,7 +29,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         }
         return categories;
     }
-
     @Override
     public Category getById(int categoryId) {
         String sql = "SELECT * FROM categories WHERE category_id = ?";
@@ -49,7 +45,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         }
         return null;
     }
-
     @Override
     public Category create(Category category) {
         String sql = "INSERT INTO categories (name, description) VALUES (?, ?)";
@@ -68,7 +63,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         }
         return category;
     }
-
     @Override
     public void update(int categoryId, Category category) {
         String sql = "UPDATE categories SET name = ?, description = ? WHERE category_id = ?";
@@ -82,7 +76,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
             throw new RuntimeException(e);
         }
     }
-
     @Override
     public void delete(int categoryId) {
         String sql = "DELETE FROM categories WHERE category_id = ?";
@@ -94,22 +87,17 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
             throw new RuntimeException(e);
         }
     }
-
-
     private Category mapRow(ResultSet row) throws SQLException
     {
         int categoryId = row.getInt("category_id");
         String name = row.getString("name");
         String description = row.getString("description");
-
         Category category = new Category()
         {{
             setCategoryId(categoryId);
             setName(name);
             setDescription(description);
         }};
-
         return category;
     }
-
 }

@@ -1,6 +1,5 @@
 <div class="filter-box">
     <h3>Filter</h3>
-
     <div class="form-floating mb-3">
         <select name="" id="category-select" class="form-select"
             onchange="setCategory(this)"
@@ -17,7 +16,6 @@
         <label for="max-price" class="form-label">Maximum Price: $ <span id="max-price-display">500</span></label>
         <input type="range" class="form-range" id="max-price" min="0" max="500" value="500" onchange="setMaxPrice(this)">
     </div>
-
     <div class="form-floating mb-3">
         <select name="" id="subcategory-select" class="form-select"
                 onchange="setSubcategory(this)"
@@ -36,6 +34,5 @@
         </select>
         <label for="subcategory-select">Genre</label>
     </div>
-
 </div>
 <div id="content" class="content"></div>

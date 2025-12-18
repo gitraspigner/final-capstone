@@ -1,5 +1,4 @@
 package org.yearup.configuration;
-
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +18,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 @Configuration
 public class TestDatabaseConfig
 {
@@ -27,7 +25,6 @@ public class TestDatabaseConfig
     private final String testDb;
     private final String username;
     private final String password;
-
     @Autowired
     public TestDatabaseConfig(@Value("${datasource.url}") String serverUrl,
                               @Value("${datasource.username}") String username,
@@ -39,10 +36,8 @@ public class TestDatabaseConfig
         this.username = username;
         this.password = password;
     }
-
     @PostConstruct
     public void setup() {
-
         try(Connection connection = DriverManager.getConnection(serverUrl + "/sys", username, password);
             Statement statement = connection.createStatement();
         )
@@ -52,10 +47,8 @@ public class TestDatabaseConfig
         }
         catch (SQLException ignored) {}
     }
-
     @PreDestroy
     public void cleanup() {
-
         try(Connection connection = DriverManager.getConnection(serverUrl + "/sys", username, password);
             Statement statement = connection.createStatement();
         )
@@ -63,10 +56,7 @@ public class TestDatabaseConfig
             statement.execute("DROP DATABASE IF EXISTS " + testDb + ";");
         }
         catch (SQLException ignored){}
-
     }
-
-
     @Bean
     public DataSource dataSource() throws SQLException, IOException
     {
@@ -76,12 +66,10 @@ public class TestDatabaseConfig
         dataSource.setPassword(password);
         dataSource.setAutoCommit(false);
         dataSource.setSuppressClose(true);
-
         ScriptRunner runner = new ScriptRunner(dataSource.getConnection());
         Reader reader = new BufferedReader(new FileReader((new ClassPathResource("test-data.sql")).getFile().getAbsolutePath()));
         runner.runScript(reader);
         dataSource.getConnection().commit();
-
         return dataSource;
     }
 }

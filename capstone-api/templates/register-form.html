@@ -7,39 +7,28 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-
-<!-- Register Modal -->
 <div id="register-form" class="modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-
             <div class="modal-header">
                 <h5 class="modal-title">Register</h5>
                 <button type="button" class="btn-close" onclick="hideModalForm()" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"></span>
                 </button>
             </div>
-
             <div class="modal-body">
-                <!-- Username -->
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="reg-username" placeholder="Username">
                     <label for="reg-username">Username</label>
                 </div>
-
-                <!-- Password -->
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="reg-password" placeholder="Password">
                     <label for="reg-password">Password</label>
                 </div>
-
-                <!-- Confirm Password -->
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="reg-confirm-password" placeholder="Confirm Password">
                     <label for="reg-confirm-password">Confirm Password</label>
                 </div>
-
-                <!-- Role -->
                 <div class="form-floating mb-3">
                     <select class="form-select" id="reg-role">
                         <option value="">Select Role</option>
@@ -49,7 +38,6 @@
                     <label for="reg-role">Role</label>
                 </div>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" onclick="hideModalForm()">Cancel</button>
                 <button type="button" class="btn btn-success" onclick="register()">Register</button>
@@ -58,7 +46,6 @@
         </div>
     </div>
 </div>
-
 <script src="js/application.js"></script>
 </body>
 </html>

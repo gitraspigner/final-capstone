@@ -10,11 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-/**
- * *******Add program description here******
- *
- * @author Ravi Spigner
- */
 @Repository
 public class MySqlShoppingCartDao implements ShoppingCartDao {
     private final DataSource dataSource;

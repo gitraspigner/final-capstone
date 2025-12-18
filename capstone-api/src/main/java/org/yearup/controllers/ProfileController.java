@@ -8,11 +8,9 @@ import org.yearup.models.Profile;
 @RequestMapping("/profile")
 public class ProfileController {
     private final ProfileDao profileDao;
-
     public ProfileController(ProfileDao profileDao) {
         this.profileDao = profileDao;
     }
-
     @PostMapping
     public Profile register(@RequestBody Profile newProfile) {
         return profileDao.create(newProfile);

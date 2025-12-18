@@ -11,6 +11,18 @@ function showRegisterForm()
 {
     templateBuilder.build('register-form', {}, 'register');
 }
+function loadCategories(categories) {
+    //console.log("Categories loaded:", categories); //debug
+    const select = document.getElementById("category-select");
+    if (!select) return;
+    select.innerHTML = '<option value="0">Show All</option>';
+    categories.forEach(cat => {
+        const opt = document.createElement("option");
+        opt.value = cat.categoryId;
+        opt.textContent = cat.name;
+        select.appendChild(opt);
+    });
+}
 function hideModalForm()
 {
     templateBuilder.clear('login');

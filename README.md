@@ -2,10 +2,9 @@
 ## Course Taught By: Maaike Van Putten
 
 ### 🛠️ Tools Used
-![Java](https://img.shields.io/badge/language-Java-blue.svg) ![IDE](https://img.shields.io/badge/IDE-IntelliJ-orange) <br>
+![Java](https://img.shields.io/badge/language-Java-blue.svg) / ![IDE](https://img.shields.io/badge/IDE-IntelliJ-orange) <br>
 ![SQL](https://img.shields.io/badge/language-SQL-blue.svg) / ![mySQL](https://img.shields.io/badge/database-MySQL-4479A1.svg?logo=mysql&logoColor=white) <br>
-![Maven](https://img.shields.io/badge/build-Maven-C71A36.svg?logo=apachemaven&logoColor=white) <br>
-![Spring](https://img.shields.io/badge/framework-Spring-6DB33F.svg?logo=spring&logoColor=white) <br>
+![Maven](https://img.shields.io/badge/build-Maven-C71A36.svg?logo=apachemaven&logoColor=white) <br> / ![Spring](https://img.shields.io/badge/framework-Spring-6DB33F.svg?logo=spring&logoColor=white) <br>
 ![HTML](https://img.shields.io/badge/language-HTML5-E34F26.svg?logo=html5&logoColor=white) / ![CSS](https://img.shields.io/badge/language-CSS3-1572B6.svg?logo=css3&logoColor=white) <br>
 ![JavaScript](https://img.shields.io/badge/language-JavaScript-F7DF1E.svg?logo=javascript&logoColor=black) <br> / ![Mustache](https://img.shields.io/badge/template-Mustache-FF6600.svg?logo=mustache&logoColor=white) <br>
 

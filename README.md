@@ -15,10 +15,9 @@
 | ![Status](https://img.shields.io/badge/status-active-brightgreen) | 12/12/2025 - 12/18/2025 |
 
 ### 📝 Description
-My final capstone project. <br>
+My final capstone project. A browser-contained web store that offers video games and accessories to users. <br>
 The PDF containing the capstone writeup cannot be uploaded due to Pluralsight ownership rights. <br>
-But below you will find brief descriptions of each of the projects, which should give a better idea of their intended function and requirements. <br>
-The Javadoc-style class comments I've made for each of the java files developed for each capstone were designed to be descriptive enough to give the reader a good idea of their intended function and requirements as well.
+Throughout this documentation file you will find brief descriptions of parts of this project, which will give a better idea of its functions and the final capstone writeup requirements. <br>
 
 #### 🕒 Commits History Here<br>
 [Development Branch Here](https://github.com/gitraspigner/final-capstone/commits/development) <br>

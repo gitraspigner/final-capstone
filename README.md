@@ -21,8 +21,8 @@ But below you will find brief descriptions of each of the projects, which should
 The Javadoc-style class comments I've made for each of the java files developed for each capstone were designed to be descriptive enough to give the reader a good idea of their intended function and requirements as well.
 
 #### 🕒 Commits History Here<br>
-[Click Here](https://github.com/gitraspigner/final-capstone/commits/master) <br>
-
+[Development Branch Here](https://github.com/gitraspigner/final-capstone/commits/development) <br>
+[Master Branch Here](https://github.com/gitraspigner/final-capstone/commits/master) <br>
 #### 📋 Project Boards Here<br>
 [Click Here](https://github.com/gitraspigner?tab=projects) <br>
 
@@ -30,10 +30,21 @@ The Javadoc-style class comments I've made for each of the java files developed 
 
 ---
 ### Capstone 3
- - **Capstone Title:** Web Store (Video Game Store - Ravi Games (Website))
- - **Description:** A web store that sells video games and accessories to users. 
- - **Application Screens:** -In Progress-
- - 
+  ## **Capstone Title:** Web Store (Video Game Store - Ravi Games (Website))
+ - **Description:** A browser-contained web store that offers video games and accessories to users.
+ - **Application Screens:**
+  - **Home:** <br>
+![home.png](screenshots/home.png)
+  - **Product Filters Applied (Category, Subcategory, Price):** <br> <br>
+![filtersApplied.png](screenshots/filtersApplied.png)
+  - **Login Form:** <br> <br>
+![loginForm.png](screenshots/loginForm.png)
+  - **Register Form:** <br> <br>
+![registerForm1.jpg](screenshots/registerForm1.jpg)
+  - **Register (Buttons Shown):** <br> <br>
+![registerForm2.jpg](screenshots/registerForm2.jpg)
+  - **Cart View (Logged In, Multiple Items Added To Cart):** <br> <br> 
+![cartViewMultipleItems.jpg](screenshots/cartViewMultipleItems.jpg)
   - **Interesting Code Snippet:** -In Progress-
     - **Snippet:** -In Progress-
     - **Why it's interesting:** -In Progress-

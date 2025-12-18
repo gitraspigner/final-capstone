@@ -20,8 +20,8 @@ The PDF containing the capstone writeup cannot be uploaded due to Pluralsight ow
 Throughout this documentation file you will find brief descriptions of parts of this project, which will give a better idea of its functions and the final capstone writeup requirements. <br>
 
 #### 🕒 Commits History Here<br>
-[Development Branch Here](https://github.com/gitraspigner/final-capstone/commits/development) <br>
 [Master Branch Here](https://github.com/gitraspigner/final-capstone/commits/master) <br>
+[Development Branch Here](https://github.com/gitraspigner/final-capstone/commits/development) <br>
 #### 📋 Project Boards Here<br>
 [Click Here](https://github.com/gitraspigner?tab=projects) <br>
 

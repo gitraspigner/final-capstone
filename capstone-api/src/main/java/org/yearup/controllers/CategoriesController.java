@@ -53,6 +53,9 @@ public class CategoriesController
         }
         catch(Exception ex)
         {
+            if (ex instanceof ResponseStatusException) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }
@@ -79,6 +82,9 @@ public class CategoriesController
         try {
             return categoryDao.create(category);
         } catch (Exception ex) {
+            if (ex instanceof ResponseStatusException) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }
@@ -90,6 +96,9 @@ public class CategoriesController
         try {
             categoryDao.update(id, category);
         } catch (Exception ex) {
+            if (ex instanceof ResponseStatusException) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }
@@ -101,6 +110,9 @@ public class CategoriesController
         try {
             categoryDao.delete(id);
         } catch (Exception ex) {
+            if (ex instanceof ResponseStatusException) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }

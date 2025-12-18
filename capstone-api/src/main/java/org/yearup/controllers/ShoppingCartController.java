@@ -48,8 +48,10 @@ public class ShoppingCartController
             // use the shoppingcartDao to get all items in the cart and return the cart
             return shoppingCartDao.getByUserId(userId);
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
+            if (e instanceof ResponseStatusException) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }
@@ -81,10 +83,12 @@ public class ShoppingCartController
             }
             return shoppingCartDao.getByUserId(userId);
         } catch (Exception e) {
+            if (e instanceof ResponseStatusException) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to add product.");
         }
     }
-
     // add a PUT method to update an existing product in the cart - the url should be
     // https://localhost:8080/cart/products/15 (15 is the productId to be updated)
     // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated
@@ -100,6 +104,9 @@ public class ShoppingCartController
             shoppingCartDao.updateItem(userId, productId, item.getQuantity());
             return shoppingCartDao.getByUserId(userId);
         } catch (Exception e) {
+            if (e instanceof ResponseStatusException) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to update product.");
         }
     }
@@ -115,6 +122,9 @@ public class ShoppingCartController
             shoppingCartDao.clearCart(userId);
             return ResponseEntity.noContent().build(); // 204
         } catch (Exception e) {
+            if (e instanceof ResponseStatusException) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
                     "Unable to clear cart."

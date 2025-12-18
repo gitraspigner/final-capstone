@@ -73,15 +73,15 @@ Throughout this documentation file you will find brief descriptions of parts of 
   ```
 
 - **Tests Included (Controller Classes - Spring):**
-- Categories Controller
+- Categories Controller <br>
 ![CategoriesControllerTestOutput.png](screenshots/CategoriesControllerTestOutput.png)
-- Shopping Cart Controller
+- Shopping Cart Controller <br>
 ![ShoppingCartControllerTestOutput.png](screenshots/ShoppingCartControllerTestOutput.png)
 
 - **Testing Endpoint Requests (using JSON and Insomnia):**
-- Retrieve Categories
+- Retrieve Categories <br>
 ![insomniaQuery1.png](screenshots/insomniaQuery1.png)
-- Product Search
+- Product Search  <br>
 ![insomniaQuery2.png](screenshots/insomniaQuery2.png)
 
 - **Extra Features:**

@@ -1,6 +1,8 @@
 # Year Up United / Pluralsight - Final Capstone
 ## Course Taught By: Maaike Van Putten
 
+![raviGamesBannerConsole.png](screenshots/raviGamesBannerConsole.png)
+
 ### 🛠️ Tools Used
 ![Java](https://img.shields.io/badge/language-Java-blue.svg) / ![IDE](https://img.shields.io/badge/IDE-IntelliJ-orange) <br>
 ![SQL](https://img.shields.io/badge/language-SQL-blue.svg) / ![MySQL (Workbench)](https://img.shields.io/badge/database-MySQL%20(Workbench)-4479A1.svg?logo=mysql&logoColor=white) <br>
@@ -29,8 +31,9 @@ The Javadoc-style class comments I've made for each of the java files developed 
 ---
 ### Capstone 3
  - **Capstone Title:** Web Store (Video Game Store - Ravi Games (Website))
- - **Description:** -In Progress-
+ - **Description:** A web store that sells video games and accessories to users. 
  - **Application Screens:** -In Progress-
+ - 
   - **Interesting Code Snippet:** -In Progress-
     - **Snippet:** -In Progress-
     - **Why it's interesting:** -In Progress-

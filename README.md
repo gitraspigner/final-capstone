@@ -73,9 +73,9 @@ Throughout this documentation file you will find brief descriptions of parts of 
   ```
 
 - **Tests Included (Controller Classes - Spring):**
- - Categories Controller
+- Categories Controller
 ![CategoriesControllerTestOutput.png](screenshots/CategoriesControllerTestOutput.png)
- - Shopping Cart Controller
+- Shopping Cart Controller
 ![ShoppingCartControllerTestOutput.png](screenshots/ShoppingCartControllerTestOutput.png)
 
 - **Testing Endpoint Requests (using JSON and Insomnia):**

@@ -31,7 +31,6 @@ class ProductService {
         }
     }
     constructor() {
-
         //load list of photos into memory
         axios.get("/images/products/photos.json")
             .then(response => {
@@ -61,7 +60,6 @@ class ProductService {
         if(subCategory == "") this.clearSubcategoryFilter();
         else this.filter.subCategory = subCategory;
     }
-
     clearCategoryFilter()
     {
         this.filter.cat = undefined;
@@ -74,15 +72,12 @@ class ProductService {
     {
         this.filter.maxPrice = undefined;
     }
-    clearSubcategoryFilter()
-    {
+    clearSubcategoryFilter() {
         this.filter.subCategory = undefined;
     }
-
     search()
     {
         const url = `${config.baseUrl}/products${this.filter.queryString()}`;
-
         axios.get(url)
              .then(response => {
                  let data = {};
@@ -94,20 +89,15 @@ class ProductService {
                          product.imageUrl = "no-image.jpg";
                      }
                  })
-
                  templateBuilder.build('product', data, 'content', this.enableButtons);
-
              })
             .catch(error => {
-
                 const data = {
                     error: "Searching products failed."
                 };
-
                 templateBuilder.append("error", data, "errors")
             });
     }
-
     enableButtons()
     {
         const buttons = [...document.querySelectorAll(".add-button")];

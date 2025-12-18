@@ -33,105 +33,72 @@ The Javadoc-style class comments I've made for each of the java files developed 
   ## **Capstone Title:** Web Store (Video Game Store - Ravi Games (Website))
  - **Description:** A browser-contained web store that offers video games and accessories to users.
  - **Application Screens:**
-  - **Home:** <br>
+  - **Home** <br>
 ![home.png](screenshots/home.png)
-  - **Product Filters Applied (Category, Subcategory, Price):** <br> <br>
+  - **Product Filters Applied (Category, Subcategory, Price)** <br> <br>
 ![filtersApplied.png](screenshots/filtersApplied.png)
-  - **Login Form:** <br> <br>
+  - **Login Form** <br> <br>
 ![loginForm.png](screenshots/loginForm.png)
-  - **Register Form:** <br> <br>
+  - **Register Form** <br> <br>
 ![registerForm1.jpg](screenshots/registerForm1.jpg)
-  - **Register (Buttons Shown):** <br> <br>
+  - **Register (Buttons Shown)** <br> <br>
 ![registerForm2.jpg](screenshots/registerForm2.jpg)
-  - **Cart View (Logged In, Multiple Items Added To Cart):** <br> <br> 
+  - **Cart View (Logged In, Multiple Items Added To Cart)** <br> <br> 
 ![cartViewMultipleItems.jpg](screenshots/cartViewMultipleItems.jpg)
-  - **Interesting Code Snippet:** -In Progress-
-    - **Snippet:** -In Progress-
-    - **Why it's interesting:** -In Progress-
-  - **Additional Thoughts:** -In Progress-
----
-# Capstone 2
-  ## - **Capstone Title:** Sandwich Shop (Command Line Application)
-  - **Description:** Simulates a Sandwich Shop application (ran from a command line interface). <br>
-    The user (typically an employee of the shop) navigates a series of menus to accomplish basic order-related tasks of a sandwich shop. These tasks include creating a new order (with an order name) that consists of a series of items (either Sandwich, Chip, or Drink). Sandwiches can have multiple toppings, Chips are only offered of one size (Regular). Drinks and Sandwiches are offered of one of three sizes: Small, Medium, or Large. For Sandwiches, Meat & Cheese toppings each have a charge based off of the size of the Sandwich, and if the topping is an extra helping or not. Other toppings (which include Veggies and Sauces) have no charge for them. A user may also display reports including the current receipts/transactions of the day, and the total revenue from all previous user sessions. All receipts are written to a file (which, for this program is called "receipts.csv"). Each user session has its date recorded to the receipts file. All orders from that user session are recorded under the date of the user session, each order contains the name, order number (which starts from order #001 for each user session), and the items of the order.
-<br> <br>
-  - **UML Diagram:**
-![UML Diagram.png](src/com/pluralsight/capstone2/Screenshots/UML%20Diagram.png)
-  - **Application Screens:**
-    - **First Program Run & Welcome Message (With No Prior Receipts File):** <br>
-![firstProgramRunNoReceiptsFile.png](src/com/pluralsight/capstone2/Screenshots/firstProgramRunNoReceiptsFile.png)
-    - **Invalid User Input (Number Out Of Range Of Menu Options):** <br> <br>
-![invalidInputNumberOutOfRange.png](src/com/pluralsight/capstone2/Screenshots/invalidInputNumberOutOfRange.png)
-    - **Invalid User Input (Word or Number Expected):** <br> <br>    
-![invalidInputNonWordOrNonNumber.png](src/com/pluralsight/capstone2/Screenshots/invalidInputNonWordOrNonNumber.png)
-    - **(New) Signature Sandwich Orders:** <br> <br>
-![signatureSandwiches.png](src/com/pluralsight/capstone2/Screenshots/signatureSandwiches.png)
-    - **A Complex Sandwich (pt1):** <br> <br>
-![addComplexSandwich1.png](src/com/pluralsight/capstone2/Screenshots/addComplexSandwich1.png)
-    - **A Complex Sandwich (pt2):** <br> <br>
-![addComplexSandwich2.png](src/com/pluralsight/capstone2/Screenshots/addComplexSandwich2.png)
-    - **A Complex Sandwich (pt3):** <br> <br>
-![addComplexSandwich3.png](src/com/pluralsight/capstone2/Screenshots/addComplexSandwich3.png)
-    - **A Non-Sandwich Order:** <br> <br>
-![addNonSandwichOrder.png](src/com/pluralsight/capstone2/Screenshots/addNonSandwichOrder.png)
-    - **Add Simple Sandwich (No Drink or Chip) Order:** <br> <br>
-![addSimpleSandwichOrder.png](src/com/pluralsight/capstone2/Screenshots/addSimpleSandwichOrder.png)
-    - **Display Orders of Current Session:** <br> <br>
-![displayOrdersOfCurrentSession.png](src/com/pluralsight/capstone2/Screenshots/displayOrdersOfCurrentSession.png)
-    - **Receipts File After Tests (Above):** <br> <br>
-![receipts-csv-afterExitingApplication.png](src/com/pluralsight/capstone2/Screenshots/receipts-csv-afterExitingApplication.png)
-    - **Display Total Revenue Of Previous Sessions:** <br> <br>
-![displayTotalRevenuePreviousSessions.png](src/com/pluralsight/capstone2/Screenshots/displayTotalRevenuePreviousSessions.png)
-    - **Receipts File, Multiple Days/Sessions Supported** <br> <br>
-![receipts-csv-multipleDaysSessions.png](src/com/pluralsight/capstone2/Screenshots/receipts-csv-multipleDaysSessions.png)
+ - **Interesting Code Snippet (from templates/home.html):**
 
-    <br> <br>
-  - **Interesting Code Snippets (Lambda Functions):**
-  ```java
-      public static Order getOrder(int orderNumber) {
-          return orders.stream()
-              .filter(o -> o.getOrderNumber() == orderNumber)
-              .findFirst()
-              .orElse(null);
-    }
+  ```html
+<div>
+    <label for="min-price" class="form-label">Minimum Price: $ <span id="min-price-display">0</span></label>
+    <input type="range" class="form-range" id="min-price" min="0" max="200" value="0" onchange="setMinPrice(this)">
+</div>
+<div>
+    <label for="max-price" class="form-label">Minimum Price: $ <span id="max-price-display">200</span></label>
+    <input type="range" class="form-range" id="max-price" min="0" max="200" value="200" onchange="setMaxPrice(this)">
+    </div>
   ```
-  ```java
-        public static void displayOrders() {
-        if (orders.isEmpty()) {
-            System.out.println("No orders for the day found");
-            return;
-        }
-        System.out.println("----All Orders----");
-        orders.stream().forEach(o -> {
-            System.out.println("-Order Number: " + o.getOrderNumber() +
-                    ", Order Name: " + o.getOrderName());
-            if (o.getItems().isEmpty()) {
-                System.out.println("No Items Found");
-            } else {
-                o.getItems().forEach(item ->
-                        System.out.println("\tItem: " + item.toString())
-                );
-                System.out.println(o.totalPrice());
-            }
-        });
-    }
+ - **Why it's interesting:**
+  - Above contains a few frontend bugs I found in the starter code provided for this capstone. This defines the content of the 2 sliders used to filter products by lower and upper price limits on the site. <br>
+  - The first issue is that the second slider should read 'Maximum Price' but reads 'Minimum Price' instead, which is confusing to the user since they wouldn't know which one was the slider for the maximum price of a product (despite the fact that uses the setMinPrice function), both sliders just say minimum. <br>
+  - The second issue is that the maximum values of each slider were not capable of fetching the most expensive items in inventory. These had to be adjusted to the upper limit of 500 (Dollars) so that items above 200 (Dollars) could be retrieved. <br>
+  - Below you will find the corrected snippet included in the final version of home.html.
+  ```html
+<div>
+    <label for="min-price" class="form-label">Minimum Price: $ <span id="min-price-display">0</span></label>
+    <input type="range" class="form-range" id="min-price" min="0" max="500" value="0" onchange="setMinPrice(this)">
+</div>
+<div>
+    <label for="max-price" class="form-label">Maximum Price: $ <span id="max-price-display">500</span></label>
+    <input type="range" class="form-range" id="max-price" min="0" max="500" value="500" onchange="setMaxPrice(this)">
+</div>
   ```
-  - **Why they're interesting:**
-   - They use lambdas, and I had to use lambdas to fulfill a requirement for this capstone. They both use Java stream, getOrder() retrieves an order via its order number using filter(), and displayOrders() uses two nested forEachs to display Order and Item data fields in order to displays all orders. That's pretty much it, nothing too special here.
-  - **Extra Features:**
-   - Total Revenue (File Reading)
-   - Total Revenue Of Specified Date (File Reading)
-   - Class Javadoc-style comments are included for each class
-   - Signature Sandwiches (Grand Philly Cheesesteak, Large Chicken Club)
-  - **Additional Thoughts:**
-   - It should be noted that for both extra features implemented (Total Revenue and Total Revenue Of Specified Date), that revenue from the current user session is not included. I thought this would be good design since revenue should only be added and reported for a successfully completed (and properly exited) user session (which typically should be at the end of the day of an employee operating the Sandwich Shop application to take orders).
-   - Class Javadoc-style comments are included for each class, including the JUnit test classes.
-   - Development branch & project board were utilized for this project. Neither were particularly hard to use for me.
-   - The most recent orders/transactions are appended to the end of the receipts.csv file, which is different from my first capstone where they are appended to the top. This design lead to a more efficient program where all orders/transactions from the output file did not have to be read, built, stored, and written twice during a single program session (once at the start and once at the end).
-   - There was an extra feature I wanted to implement: The Combo Meal, where if a user placed an order for a Sandwich, Drink, and Chip they'd receive 10% off their order. Due to time constraints and wanting to focus on other aspects of this project (including documentation, which I consider to be important as per my University of Washington teachings), I decided to omit this feature.
-   - The Signature Sandwich feature was implemented last-minute. Its implementation is based off of Menus.getSandwich() as opposed to a static method within Sandwich. If I had more time, I would've done that instead, but I needed to focus on my presentation (and updating my documentation).
----
 
+- **Tests Included (Controller Classes - Spring):**
+ - Categories Controller
+![CategoriesControllerTestOutput.png](screenshots/CategoriesControllerTestOutput.png)
+ - Shopping Cart Controller
+![ShoppingCartControllerTestOutput.png](screenshots/ShoppingCartControllerTestOutput.png)
+
+- **Testing Endpoint Requests (using JSON and Insomnia):**
+- Retrieve Categories
+![insomniaQuery1.png](screenshots/insomniaQuery1.png)
+- Product Search
+![insomniaQuery2.png](screenshots/insomniaQuery2.png)
+
+- **Extra Features:**
+ - Multiple Cart Items (reflected across site UI)
+ - Account Registration (feature included and UI entry form supported)
+ - User Cart Saved Between Sessions
+ - Custom Console Startup Banner (very minor, not included in site UI)
+
+- **Additional Thoughts:**
+ - Here are several features I wanted to implement, but was unable to due to time constraints:
+  - Update the project to use Spring JPA (to utilize existing Spring implementation for database access)
+  - Add an admin-role account deletion feature to site UI (the backend does in fact currently support this)
+  - Add a cart/order checkout feature to site UI (backend)
+  - Add profile info display to site UI (also currently backend-supported)
+
+---
 
 ### 🔖 Citation
 I wrote this README.md, but I did indeed use ChatGPT to give my initial framework and to learn markdown formatting. Therefore here is an APA Style Citation for it:  <br>

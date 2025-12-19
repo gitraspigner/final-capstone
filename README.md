@@ -93,9 +93,10 @@ Throughout this documentation file you will find brief descriptions of parts of 
 - **Additional Thoughts:**
  - Here are several features I wanted to implement, but was unable to due to time constraints:
   - Update the project to use Spring JPA (to utilize existing Spring implementation for database access)
-  - Add an admin-role account deletion feature to site UI (the backend does in fact currently support this)
-  - Add a cart/order checkout feature to site UI (backend)
-  - Add profile info display to site UI (also currently backend-supported)
+  - Add an admin-role account deletion feature, and restrict the creation of other admin accounts to only admin accounts visually within site UI (the backend has the pieces to do this)
+  - Add a cart/order checkout feature to site UI (backend has the pieces as well)
+  - Add profile info display to site UI (also backend has the pieces as well)
+  - Some of my controller methods aren't entirely parallel to the capstone_insomnia_collections.YAML requests collection, but I was still able to test them by writing other requests, adding and removing frontend UI features to test them, and understanding the format of the responses methods and requests generated.
 
 ---
 

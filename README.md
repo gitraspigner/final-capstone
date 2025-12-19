@@ -29,7 +29,7 @@ Throughout this documentation file you will find brief descriptions of parts of 
 
 ---
 ### Capstone 3
-  ## **Capstone Title:** Web Store (Video Game Store - Ravi Games (Website))
+  ## **Capstone Title:** E-Commerce API Project (Website) - Ravi Games - Video Game Store In Your Browser
  - **Description:** A browser-contained web store that offers video games and accessories to users.
  - **Application Screens:**
   - **Home** <br>

@@ -12,7 +12,9 @@
 
 | Active/Inactive                                                   | Active Dates            |
 |-------------------------------------------------------------------|-------------------------|
-| ![Status](https://img.shields.io/badge/status-active-brightgreen) | 12/12/2025 - 12/18/2025 |
+| ![Status](https://img.shields.io/badge/status-inactive-lightgrey) | 12/12/2025 - 12/18/2025 |
+<!-- Inactive:  https://img.shields.io/badge/status-inactive-lightgrey -->
+<!-- Active:    https://img.shields.io/badge/status-active-brightgreen -->
 
 ### 📝 Description
 My final capstone project. A browser-contained web store that offers video games and accessories to users. <br>
@@ -106,4 +108,4 @@ OpenAI. (2025). ChatGPT (Oct 1 version) [Large language model]. https://chatgpt.
 
 *I have to give credit where it's due, right?* <br>
 
-**Last Edited: 12/18/2025**
+**Last Edited: 12/26/2025**
